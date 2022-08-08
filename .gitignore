@@ -1,11 +1,12 @@
 webpack-stats.json
-/static/**/*
+static/**/*
+/frontend/static
 
 # Django #
 *.log
 *.pot
 *.pyc
-__pycache__
+/hackathon/__pycache__
 db.sqlite3
 media
 
