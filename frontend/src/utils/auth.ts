@@ -1,8 +1,8 @@
 import axios from 'axios'
-import shallow from 'zustand/shallow'
-import { useStore } from '@store/index'
+import { store } from '@store/index'
+import { toast } from 'react-toastify'
 
-export const baseURL = `localhost:8000/api`
+export const baseURL = `http://localhost:8000/api`
 
 const apiConnection = {
   baseURL,
@@ -17,31 +17,24 @@ const axiosInstance = axios.create(apiConnection)
 
 axiosInstance.interceptors.request.use(
   (config) => {
-    const token = useStore((state) => state.token, shallow)
-
+    const { token } = store.getState()
     return {
       ...config,
       headers: {
         ...config.headers,
-        ...(token ? { Authorization: token } : {}),
+        ...(token ? { Authorization: `Bearer ${token}` } : {}),
       },
     }
   },
-  (err) => Promise.reject(err)
+  (error) => Promise.reject(error)
 )
 
-axios.interceptors.response.use(
+axiosInstance.interceptors.response.use(
   (response) => response,
   (error) => {
-    // Do something with response error
+    toast.error(error.message)
     return Promise.reject(error)
   }
 )
-
-export const unsetAuthorizationHeader = () => {
-  const clearToken = useStore((state) => state.clearToken)
-  clearToken()
-  delete axiosInstance.defaults.headers.common['Authorization']
-}
 
 export default axiosInstance

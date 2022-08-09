@@ -1,14 +1,21 @@
 import { StateCreator } from 'zustand'
+import { BoundSlices } from './index'
 
 export interface AuthSlice {
   token: string | null
-  setToken: (token: string) => void
-  clearToken: () => void
+  refresh: string | null
+  setTokens: (token: string, refresh: string) => void
+  logout: () => void
 }
 
-export const createAuthSlice: StateCreator<AuthSlice> = (set) => ({
+export const createAuthSlice: StateCreator<
+  BoundSlices,
+  [['zustand/persist', unknown]],
+  [],
+  AuthSlice
+> = (set) => ({
   token: null,
-  setToken: (token: string) => set((_state) => ({ token })),
-  clearToken: () => set((_state) => ({ token: null })),
-  // addBear: () => set((state) => ({ bears: state.bears + 1 })),
+  refresh: null,
+  setTokens: (token: string, refresh: string) => set(() => ({ token, refresh })),
+  logout: () => set(() => ({ token: null, refresh: null })),
 })

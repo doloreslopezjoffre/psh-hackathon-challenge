@@ -31,7 +31,7 @@ export const TextInput: React.FC<Props> = ({ id, label, hint, error, register, .
         )}
       />
       {(error || hint) && (
-        <p className={classnames('text-hint absolute', error && 'text-orange-600/60')}>
+        <p className={classnames('text-hint absolute', error && 'text-orange-600/70')}>
           {error ?? hint}
         </p>
       )}

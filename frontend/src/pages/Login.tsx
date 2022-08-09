@@ -1,36 +1,36 @@
-import { Card } from '@components/Card'
-import { Layout } from '@components/Layout'
-
 import React from 'react'
+
 import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import * as yup from 'yup'
+
+import { useAuthActions } from 'use-eazy-auth'
+import { LoginCredentials } from '@services/auth'
+
+import { Card } from '@components/Card'
+import { Layout } from '@components/Layout'
+
 import { TextInput } from '@components/TextInput'
 import { Button } from '@components/Button'
-
-interface LoginFormValues {
-  username: string
-  password: string
-}
 
 const schema = yup.object().shape({
   username: yup.string().required('Who are you?'),
   password: yup.string().required(`It's ok, we won't tell anyone ;)`),
 })
 
-export const Login = () => {
+const Login = () => {
+  const { login } = useAuthActions()
+
   const {
     handleSubmit,
     register,
     formState: { errors },
-  } = useForm<LoginFormValues>({ resolver: yupResolver(schema), mode: 'onBlur' })
-
-  const onSubmit = (values: LoginFormValues) => console.log(values)
+  } = useForm<LoginCredentials>({ resolver: yupResolver(schema), mode: 'onBlur' })
 
   return (
     <Layout>
       <Card title="Welcome, Hacker!" bodyClassName="flex justify-center">
-        <form className="w-5/6" onSubmit={handleSubmit(onSubmit)}>
+        <form className="w-5/6" onSubmit={handleSubmit(login)}>
           <TextInput
             id="username"
             label="Username"
@@ -56,3 +56,5 @@ export const Login = () => {
     </Layout>
   )
 }
+
+export default Login

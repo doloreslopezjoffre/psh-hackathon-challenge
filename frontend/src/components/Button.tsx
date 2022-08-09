@@ -8,9 +8,9 @@ interface Props {
   type?: 'button' | 'submit' | 'reset'
 }
 
-export const RoundedButton: React.FC<Props> = ({ text, href }) => {
+export const RoundedButton: React.FC<Props> = ({ text, href, onClick = () => {} }) => {
   return (
-    <div className="items-center flex">
+    <div className="items-center flex" onClick={onClick}>
       <div className="justify-center cursor-pointer text-center border-2 border-[#DED5E2] font-semibold transition-colors duration-200 bg-transparent text-black hover:border-black rounded-full px-4 py-2">
         <a href={href}>
           <span>{text}</span>

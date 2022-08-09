@@ -17,6 +17,10 @@ body {
   @apply hover:opacity-60 transition-opacity cursor-pointer;
 }
 
+.link.disabled {
+  @apply opacity-30;
+}
+
 h1 {
   @apply font-semibold;
 }
@@ -30,5 +34,5 @@ form {
 }
 
 .text-hint {
-  @apply text-xs italic;
+  @apply text-xs italic tracking-tight;
 }
