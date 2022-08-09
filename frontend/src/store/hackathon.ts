@@ -1,11 +1,11 @@
 import { StateCreator } from 'zustand'
 
 export interface HackathonSlice {
-  fishes: number
-  addFish: () => void
+  hackathons: string[]
+  //addFish: () => void
 }
 
 export const createHackathonSlice: StateCreator<HackathonSlice> = (set) => ({
-  fishes: 0,
-  addFish: () => set((state) => ({ fishes: state.fishes + 1 })),
+  hackathons: [],
+  // addFish: () => set((state) => ({ fishes: state.fishes + 1 })),
 })
