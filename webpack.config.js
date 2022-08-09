@@ -8,7 +8,7 @@ module.exports = {
   },
   output: {
     path: path.resolve('./frontend/static/frontend/'),
-    filename: '[name]-[hash].js',
+    filename: '[name]-[fullhash].js',
     publicPath: 'static/frontend/',
   },
   plugins: [
@@ -19,6 +19,13 @@ module.exports = {
     }),
   ],
   resolve: {
+    alias: {
+      '@utils': path.resolve(__dirname, './frontend/src/utils/'),
+      '@services': path.resolve(__dirname, './frontend/src/services/'),
+      '@store': path.resolve(__dirname, './frontend/src/store/'),
+      '@pages': path.resolve(__dirname, './frontend/src/pages/'),
+      '@components': path.resolve(__dirname, './frontend/src/components/'),      
+    },
     extensions: ['.js', '.jsx', '.ts', '.tsx'],
   },
   module: {

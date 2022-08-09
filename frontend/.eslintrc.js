@@ -32,11 +32,15 @@ module.exports = {
       },
       settings: {
         'import/resolver': {
+          typescript: {},
           alias: {
             extensions: ['.ts', '.tsx'],
             map: [
-              ['@pages', './src/pages'],
-              ['@components', './src/components'],
+              ['@utils', './frontend/src/utils'],
+              ['@services', './frontend/src/services'],
+              ['@store', './frontend/src/store'],
+              ['@pages', './frontend/src/pages'],
+              ['@components', './frontend/src/components'],
               ['@', './src'],
             ],
           },
