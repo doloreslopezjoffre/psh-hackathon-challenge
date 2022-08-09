@@ -8,11 +8,13 @@ import { Login } from '@pages/Login'
 import { login, me, refresh } from '@services/auth'
 
 import { Home } from '@pages/Home'
+import { Navbar } from '@components/Navbar'
 
 const App: React.FC = (props) => {
   return (
     <>
       <Auth loginCall={login} meCall={me} refreshTokenCall={refresh}>
+        <Navbar />
         <Router>
           <Switch>
             <GuestRoute path="/login" redirectTo="/">
