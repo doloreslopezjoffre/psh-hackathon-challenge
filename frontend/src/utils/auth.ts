@@ -32,7 +32,7 @@ axiosInstance.interceptors.request.use(
 axiosInstance.interceptors.response.use(
   (response) => response,
   (error) => {
-    toast.error(error.message)
+    toast.error(error.response.data?.detail ?? error.message)
     return Promise.reject(error)
   }
 )

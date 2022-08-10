@@ -24,13 +24,19 @@ const Login = () => {
   const {
     handleSubmit,
     register,
+    reset,
     formState: { errors },
   } = useForm<LoginCredentials>({ resolver: yupResolver(schema), mode: 'onBlur' })
+
+  const onSubmit = (data: LoginCredentials) => {
+    reset()
+    login(data)
+  }
 
   return (
     <Layout>
       <Card title="Welcome, Hacker!" bodyClassName="flex justify-center">
-        <form className="w-5/6" onSubmit={handleSubmit(login)}>
+        <form className="w-5/6" onSubmit={handleSubmit(onSubmit)}>
           <TextInput
             id="username"
             label="Username"
