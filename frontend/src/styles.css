@@ -3,14 +3,22 @@
 @tailwind utilities;
 
 body {
-  @apply antialiased bg-[#F4F4F5];
+  @apply antialiased;
   background: linear-gradient(
-    87deg,
+    90deg,
     rgba(236, 219, 190, 1) 20%,
     rgba(222, 213, 226, 1) 38%,
     rgba(214, 212, 229, 1) 62%,
     rgba(217, 231, 227, 1) 84%
-  );
+  ) no-repeat;
+}
+
+.to-white{
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0) 20%,
+    rgba(255, 255, 255, 1) 84%
+  ) no-repeat;
 }
 
 .link {
@@ -35,4 +43,8 @@ form {
 
 .text-hint {
   @apply text-xs italic tracking-tight;
+}
+
+.layout {
+  @apply px-6 max-w-7xl mx-auto;
 }

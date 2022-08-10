@@ -11,13 +11,23 @@ import Developers from '@pages/Developers'
 import Hackathons from '@pages/Hackathons'
 
 import { Navbar } from '@components/Navbar'
+import { Layout } from '@components/Layout'
+
+import 'dayjs/locale/en'
+import LocalizedFormat from 'dayjs/plugin/localizedFormat'
+import dayjs from 'dayjs'
 
 import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 
-const App: React.FC = (props) => {
+// eslint-disable-next-line import/no-named-as-default-member
+dayjs.locale('en')
+// eslint-disable-next-line import/no-named-as-default-member
+dayjs.extend(LocalizedFormat)
+
+const App: React.FC = () => {
   return (
-    <>
+    <div className="to-white">
       <ToastContainer
         position="bottom-right"
         autoClose={3000}
@@ -30,22 +40,24 @@ const App: React.FC = (props) => {
       />
       <Auth loginCall={login} meCall={me} refreshTokenCall={refresh} onLogout={logout}>
         <Navbar />
-        <Router>
-          <Switch>
-            <GuestRoute path="/login" redirectTo="/">
-              <Login />
-            </GuestRoute>
-            <Route path="/hackathons">
-              <Hackathons />
-            </Route>
-            <AuthRoute path="/devs" redirectTo="/login">
-              <Developers />
-            </AuthRoute>
-            <Redirect to="/hackathons" />
-          </Switch>
-        </Router>
+        <Layout>
+          <Router>
+            <Switch>
+              <GuestRoute path="/login" redirectTo="/">
+                <Login />
+              </GuestRoute>
+              <Route path="/hackathons">
+                <Hackathons />
+              </Route>
+              <AuthRoute path="/devs" redirectTo="/login">
+                <Developers />
+              </AuthRoute>
+              <Redirect to="/hackathons" />
+            </Switch>
+          </Router>
+        </Layout>
       </Auth>
-    </>
+    </div>
   )
 }
 

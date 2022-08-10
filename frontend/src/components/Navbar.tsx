@@ -9,7 +9,7 @@ export const Navbar: React.FC = () => {
   const { authenticated } = useAuthState()
 
   return (
-    <div className="py-6 max-w-7xl mx-auto tracking-wider flex flex-row justify-between">
+    <div className="py-6 layout tracking-wider flex flex-row justify-between">
       <div className="w-40 items-center flex justify-start">
         <a className="cursor-pointer" href="/">
           <Logo />
