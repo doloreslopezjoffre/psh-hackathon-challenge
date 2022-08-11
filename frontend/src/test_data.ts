@@ -1,46 +1,25 @@
-// https://randomuser.me/api
-interface Developer {
-  username: string // login.username
-  picture: string // picture.medium
-  name: string // name.first
-  country: string // location.country
-}
+import { Hackathon, Developer } from '@store/data'
 
-export const dev1 = {
+// https://randomuser.me/api
+export const dev1: Developer = {
   username: 'dev1',
   picture: 'https://randomuser.me/api/portraits/med/men/96.jpg',
   name: 'Dev 1',
   country: 'Argentina',
 }
 
-export const dev2 = {
+export const dev2: Developer = {
   username: 'dev2',
   picture: 'https://randomuser.me/api/portraits/med/women/65.jpg',
   name: 'Dev 2',
   country: 'Germany',
 }
 
-export const dev3 = {
+export const dev3: Developer = {
   username: 'dev3',
   picture: 'https://randomuser.me/api/portraits/med/women/39.jpg',
   name: 'Dev 3',
   country: 'Japan',
-}
-
-interface Participant {
-  dev: Developer
-  score: number // randint(1, 100)
-}
-
-export interface Hackathon {
-  name: string // https://fakerjs.dev/api/random.html#words + Hackathon
-  motto: string // https://fakerjs.dev/api/company.html#catchPhrase x3
-  dateStart: Date // https://fakerjs.dev/api/date.html#recent | https://fakerjs.dev/api/date.html#soon
-  dateEnd: Date //  https://fakerjs.dev/api/date.html#soon | ++
-  location: string // https://fakerjs.dev/api/address.html#cityName, https://fakerjs.dev/api/address.html#country
-  website: string // https://fakerjs.dev/api/internet.html#url
-  logo: string // https://loremflickr.com/640/480/abstract
-  participants: Participant[] // length --> randint(6, 20)
 }
 
 // https://random-data-api.com/api/crypto_coin/random_crypto_coin --> logo

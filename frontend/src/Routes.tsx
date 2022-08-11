@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom'
+import { BrowserRouter as Router, Switch, Redirect } from 'react-router-dom'
 import { AuthRoute, GuestRoute } from 'use-eazy-auth/routes'
 
 import Login from '@pages/Login'
@@ -14,12 +14,14 @@ const Routes = () => (
       <GuestRoute path="/login" redirectTo="/">
         <Login />
       </GuestRoute>
-      <Route path="/hackathons">
+
+      <AuthRoute path="/hackathons" redirectTo="/login">
         <Hackathons />
-      </Route>
+      </AuthRoute>
       <AuthRoute path="/devs" redirectTo="/login">
         <Developers />
       </AuthRoute>
+
       <Redirect to="/hackathons" />
     </Switch>
   </Router>

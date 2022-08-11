@@ -1,13 +1,22 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { partition } from 'lodash'
 
 import { TitleWithNumber } from '@components/TitleWithNumber'
 import { HackathonList } from '@components/HackathonList'
 
 import { hackathon1, hackathon2, hackathon3, hackathon4 } from '../test_data'
+import useStore from '@store/index'
 
 const Hackathons = () => {
-  const hackathons = new Array(4).fill([hackathon1, hackathon2, hackathon3, hackathon4]).flat()
+  const modeStore = useStore()
+
+  const mockHackathons = new Array(4).fill([hackathon1, hackathon2, hackathon3, hackathon4]).flat()
+
+  const hackathons = mockHackathons || modeStore.hackathons
+
+  useEffect(() => {
+    modeStore.fetchHackathons()
+  }, [])
 
   const [upcomingHackathons, pastHackathons] = partition(
     hackathons,

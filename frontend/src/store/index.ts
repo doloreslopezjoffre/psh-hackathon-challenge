@@ -3,14 +3,14 @@ import createVanilla from 'zustand/vanilla'
 import { persist } from 'zustand/middleware'
 
 import { createAuthSlice, AuthSlice } from './auth'
-import { createHackathonSlice, HackathonSlice } from './hackathon'
+import { createDataSlice, DataSlice } from './data'
 
-export type BoundSlices = AuthSlice & HackathonSlice
+export type BoundSlices = AuthSlice & DataSlice
 export const store = createVanilla<BoundSlices>()(
   persist(
     (...a) => ({
       ...createAuthSlice(...a),
-      ...createHackathonSlice(...a),
+      ...createDataSlice(...a),
     }),
     { name: 'store' }
   )

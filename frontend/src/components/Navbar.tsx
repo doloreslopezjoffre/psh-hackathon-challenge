@@ -8,6 +8,13 @@ export const Navbar: React.FC = () => {
   const { logout } = useAuthActions()
   const { authenticated } = useAuthState()
 
+  const linkProps = {
+    className: classnames('link', !authenticated && 'disabled'),
+    ...(!authenticated && {
+      style: { pointerEvents: 'none' as any },
+    }),
+  }
+
   return (
     <div className="py-6 layout tracking-wider flex flex-row justify-between">
       <div className="w-40 items-center flex justify-start">
@@ -19,19 +26,13 @@ export const Navbar: React.FC = () => {
       <div className="hidden text-center md:flex flex-row items-center justify-between px-6 md:px-8 max-w-5xl mx-auto h-16">
         <ul className="items-center justify-center w-full gap-8">
           <li className="md:text-[1.1rem]">
-            <a className="link" href="/hackathons">
+            <a href="/hackathons" {...linkProps}>
               Browse hackathons
             </a>
           </li>
 
           <li className="md:text-[1.1rem]">
-            <a
-              className={classnames('link', !authenticated && 'disabled')}
-              href="/devs"
-              {...(!authenticated && {
-                style: { pointerEvents: 'none' },
-              })}
-            >
+            <a href="/devs" {...linkProps}>
               Best developers
             </a>
           </li>
