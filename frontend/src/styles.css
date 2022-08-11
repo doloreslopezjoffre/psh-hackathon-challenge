@@ -5,20 +5,18 @@
 body {
   @apply antialiased;
   background: linear-gradient(
-    90deg,
-    rgba(236, 219, 190, 1) 20%,
-    rgba(222, 213, 226, 1) 38%,
-    rgba(214, 212, 229, 1) 62%,
-    rgba(217, 231, 227, 1) 84%
-  ) no-repeat;
+      90deg,
+      rgba(236, 219, 190, 1) 20%,
+      rgba(222, 213, 226, 1) 38%,
+      rgba(214, 212, 229, 1) 62%,
+      rgba(217, 231, 227, 1) 84%
+    )
+    no-repeat;
 }
 
-.to-white{
-  background: linear-gradient(
-    to bottom,
-    rgba(255, 255, 255, 0) 20%,
-    rgba(255, 255, 255, 1) 84%
-  ) no-repeat;
+.to-white {
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 20%, rgba(255, 255, 255, 1) 84%)
+    no-repeat;
 }
 
 .link {
@@ -47,4 +45,12 @@ form {
 
 .layout {
   @apply px-6 max-w-7xl mx-auto;
+}
+
+.tag {
+  @apply inline-flex text-ellipsis items-center space-x-2 px-3 py-1 border-2 border-black uppercase font-medium text-xs;
+}
+
+.simple-hover {
+  @apply cursor-pointer hover:opacity-80;
 }

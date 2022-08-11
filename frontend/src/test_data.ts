@@ -1,8 +1,9 @@
+// https://randomuser.me/api
 interface Developer {
-  username: string
-  picture: string
-  name: string
-  country: string
+  username: string // login.username
+  picture: string // picture.medium
+  name: string // name.first
+  country: string // location.country
 }
 
 export const dev1 = {
@@ -28,24 +29,24 @@ export const dev3 = {
 
 interface Participant {
   dev: Developer
-  score: number
+  score: number // randint(1, 100)
 }
 
 export interface Hackathon {
-  title: string
-  motto: string
-  dateStart: Date
-  dateEnd: Date
-  location: string
-  website: string
-  logo: string
-  participants: Participant[]
+  name: string // https://fakerjs.dev/api/random.html#words + Hackathon
+  motto: string // https://fakerjs.dev/api/company.html#catchPhrase x3
+  dateStart: Date // https://fakerjs.dev/api/date.html#recent | https://fakerjs.dev/api/date.html#soon
+  dateEnd: Date //  https://fakerjs.dev/api/date.html#soon | ++
+  location: string // https://fakerjs.dev/api/address.html#cityName, https://fakerjs.dev/api/address.html#country
+  website: string // https://fakerjs.dev/api/internet.html#url
+  logo: string // https://loremflickr.com/640/480/abstract
+  participants: Participant[] // length --> randint(6, 20)
 }
 
 // https://random-data-api.com/api/crypto_coin/random_crypto_coin --> logo
 
 export const hackathon1: Hackathon = {
-  title: 'Hackathon 1',
+  name: 'Hackathon 1',
   motto: 'Prepare to hack',
   website: 'https://google.com',
   logo: 'https://i.imgur.com/pnupcJM.png',
@@ -59,7 +60,7 @@ export const hackathon1: Hackathon = {
 }
 
 export const hackathon2: Hackathon = {
-  title: 'Hackathon 2',
+  name: 'Hackathon 2',
   motto: 'Hacking for the future',
   website: 'https://google.com',
   logo: 'https://i.imgur.com/2HJr7OR.png',
@@ -73,7 +74,7 @@ export const hackathon2: Hackathon = {
 }
 
 export const hackathon3: Hackathon = {
-  title: 'Hackathon 3',
+  name: 'Hackathon 3',
   motto: 'I ❤️ Hackathons',
   website: 'https://google.com',
   logo: 'https://i.imgur.com/COLIHUE.png',
@@ -87,7 +88,7 @@ export const hackathon3: Hackathon = {
 }
 
 export const hackathon4: Hackathon = {
-  title: 'Hackathon 4',
+  name: 'Hackathon 4',
   motto: 'Hack, get money, repeat',
   website: 'https://google.com',
   logo: 'https://i.imgur.com/xk6pQZy.png',

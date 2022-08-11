@@ -3,12 +3,12 @@ import React from 'react'
 
 interface Props {
   text: React.ReactNode
-  onClick?: (event: any) => void
+  onClick?: () => void
   href?: string
   type?: 'button' | 'submit' | 'reset'
 }
 
-export const RoundedButton: React.FC<Props> = ({ text, href, onClick = () => {} }) => {
+export const RoundedButton: React.FC<Props> = ({ text, href, onClick }) => {
   return (
     <a href={href}>
       <div className="items-center flex" onClick={onClick}>
@@ -20,7 +20,7 @@ export const RoundedButton: React.FC<Props> = ({ text, href, onClick = () => {} 
   )
 }
 
-export const Button: React.FC<Props> = ({ text, onClick = () => {}, type = 'button' }) => {
+export const Button: React.FC<Props> = ({ text, onClick, type = 'button' }) => {
   return (
     <a>
       <div className="sm:flex sm:space-x-4 space-y-4 sm:space-y-0">

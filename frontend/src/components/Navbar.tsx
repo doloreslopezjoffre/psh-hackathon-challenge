@@ -15,15 +15,16 @@ export const Navbar: React.FC = () => {
           <Logo />
         </a>
       </div>
-      <div className="px-6 lg:px-8 max-w-5xl w-full mx-auto flex flex-row items-center justify-between h-16">
-        <ul className="invisible flex items-center justify-center w-full gap-8 lg:visible">
-          <li className="lg:text-[1.1rem]">
+
+      <div className="hidden text-center md:flex flex-row items-center justify-between px-6 md:px-8 max-w-5xl mx-auto h-16">
+        <ul className="items-center justify-center w-full gap-8">
+          <li className="md:text-[1.1rem]">
             <a className="link" href="/hackathons">
               Browse hackathons
             </a>
           </li>
 
-          <li className="lg:text-[1.1rem]">
+          <li className="md:text-[1.1rem]">
             <a
               className={classnames('link', !authenticated && 'disabled')}
               href="/devs"
@@ -36,6 +37,7 @@ export const Navbar: React.FC = () => {
           </li>
         </ul>
       </div>
+
       <div className="w-40 items-center justify-end flex">
         {authenticated ? (
           <RoundedButton text="Logout" onClick={logout} />
