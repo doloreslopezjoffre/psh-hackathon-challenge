@@ -1,9 +1,9 @@
 import React from 'react'
 
 import { ArrowNarrowRightIcon, ExternalLinkIcon } from '@heroicons/react/outline'
-import { Hackathon } from '../test_data'
 import dayjs from 'dayjs'
 import { BoxTag, RoundTag } from './Tag'
+import { Hackathon } from '@utils/types/data'
 
 export const HackathonCard: React.FC<Hackathon> = ({
   name,

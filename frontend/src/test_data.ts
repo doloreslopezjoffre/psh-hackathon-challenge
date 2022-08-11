@@ -80,3 +80,5 @@ export const hackathon4: Hackathon = {
     { dev: dev3, score: 90 },
   ],
 }
+
+const mockHackathons = new Array(4).fill([hackathon1, hackathon2, hackathon3, hackathon4]).flat()

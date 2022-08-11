@@ -23,8 +23,8 @@ export const Navbar: React.FC = () => {
         </a>
       </div>
 
-      <div className="hidden text-center md:flex flex-row items-center justify-between px-6 md:px-8 max-w-5xl mx-auto h-16">
-        <ul className="items-center justify-center w-full gap-8">
+      <div className="flex items-center text-center px-6 md:px-8 max-w-5xl mx-auto h-16">
+        <ul className="w-full gap-8 md:flex-row items-center justify-between">
           <li className="md:text-[1.1rem]">
             <a href="/hackathons" {...linkProps}>
               Browse hackathons

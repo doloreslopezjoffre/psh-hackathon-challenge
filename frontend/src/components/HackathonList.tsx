@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { Hackathon } from '../test_data'
+import { Hackathon } from '@utils/types/data'
 
 import { HackathonCard } from './HackathonCard'
 import { HackathonRow } from './HackathonRow'
@@ -11,7 +11,7 @@ interface Props {
 }
 
 export const HackathonList: React.FC<Props> = ({ cards = false, hackathons }) => {
-  if (cards)
+  if (cards) {
     return (
       <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 my-6">
         {hackathons.map((hackathon, i) => (
@@ -19,6 +19,7 @@ export const HackathonList: React.FC<Props> = ({ cards = false, hackathons }) =>
         ))}
       </div>
     )
+  }
 
   return (
     <div className="divide-y-2 border-t-2 border-b-2 border-black">

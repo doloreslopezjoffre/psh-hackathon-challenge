@@ -3,8 +3,7 @@ import dayjs from 'dayjs'
 
 import { ArrowNarrowRightIcon, ExternalLinkIcon } from '@heroicons/react/outline'
 import { BoxTag, RoundTag } from './Tag'
-
-import { Hackathon } from '../test_data'
+import { Hackathon } from '@utils/types/data'
 
 export const HackathonRow: React.FC<Hackathon> = ({
   name,
