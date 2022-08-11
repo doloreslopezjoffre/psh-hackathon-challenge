@@ -29,10 +29,15 @@ def register(request):
 
 
 @api_view(["GET"])
-@permission_classes([IsAuthenticated])
+# @permission_classes([IsAuthenticated])
 def current_user(request):
-    serializer = UserSerializer(request.user)
-    return Response(serializer.data)
+    try:
+        if not request.user.is_authenticated:
+            return Response(status=status.HTTP_401_UNAUTHORIZED)
+        serializer = UserSerializer(request.user)
+        return Response(serializer.data, status.HTTP_200_OK)
+    except Exception as e:
+        return Response(status=status.HTTP_401_UNAUTHORIZED)
 
 
 @api_view(["POST"])

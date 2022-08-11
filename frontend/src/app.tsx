@@ -10,6 +10,7 @@ import { Layout } from '@components/Layout'
 
 import 'dayjs/locale/en'
 import LocalizedFormat from 'dayjs/plugin/localizedFormat'
+import isToday from 'dayjs/plugin/isToday'
 import dayjs from 'dayjs'
 
 import { ToastContainer } from 'react-toastify'
@@ -18,6 +19,7 @@ import Routes from './Routes'
 
 dayjs.locale('en')
 dayjs.extend(LocalizedFormat)
+dayjs.extend(isToday)
 
 const App: React.FC = () => {
   return (
@@ -35,9 +37,11 @@ const App: React.FC = () => {
 
       <Auth loginCall={login} meCall={me} refreshTokenCall={refresh} onLogout={logout}>
         <Navbar />
-        <Layout>
-          <Routes />
-        </Layout>
+        <div className="pb-32 pt-8">
+          <Layout>
+            <Routes />
+          </Layout>
+        </div>
       </Auth>
     </div>
   )

@@ -1,3 +1,4 @@
+from datetime import datetime, timezone
 from django.db import models
 from django.core.validators import MaxValueValidator
 
@@ -44,6 +45,13 @@ class Hackathon(models.Model):
         related_name="hackathons",
         related_query_name="hackathon",
     )
+
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    @property
+    def is_new(self):
+        difference = datetime.now(timezone.utc) - self.created_at
+        return difference.seconds/60 < 10
 
     def __str__(self):
         return self.name

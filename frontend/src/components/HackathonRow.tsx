@@ -2,11 +2,12 @@ import React from 'react'
 import dayjs from 'dayjs'
 
 import { ArrowNarrowRightIcon, ExternalLinkIcon } from '@heroicons/react/outline'
-import { BoxTag, RoundTag } from './Tag'
+import { BlackTag, BoxTag, RoundTag } from './Tag'
 import { Hackathon } from '@utils/types/data'
 
 export const HackathonRow: React.FC<Hackathon> = ({
   name,
+  isNew,
   dateStart,
   dateEnd,
   location,
@@ -28,6 +29,12 @@ export const HackathonRow: React.FC<Hackathon> = ({
         </div>
 
         <div className="inline-flex items-center space-x-3 text-xs lg:text-lg">
+          {isNew && (
+            <BlackTag small className="hidden md:inline-flex">
+              NEW
+            </BlackTag>
+          )}
+
           <time>{dayjs(dateStart).format('ll')}</time>
           <ArrowNarrowRightIcon className="h-5 w-5" />
           <time>{dayjs(dateEnd).format('ll')}</time>

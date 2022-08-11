@@ -10,9 +10,7 @@ from .serializers import HackathonSerializer
 
 @api_view(["GET"])
 @permission_classes([IsAuthenticated])
-def hackathons(request):
+def list_hackathons(request):
     queryset = Hackathon.objects.all()
-    print(queryset)
-
     serializer = HackathonSerializer(queryset, many=True)
     return Response(serializer.data, status=status.HTTP_200_OK)

@@ -7,6 +7,7 @@ interface Props {
   onClick?: () => void
   background?: string
   className?: string
+  small?: boolean
 }
 
 export const BoxTag: React.FC<Props> = ({
@@ -30,4 +31,16 @@ export const RoundTag: React.FC<Props> = ({ children, onClick, className }) => (
   >
     {children}
   </div>
+)
+
+export const BlackTag: React.FC<Props> = ({ children, className, small = false }) => (
+  <span
+    className={classnames(
+      'inline-flex h-fit w-fit px-2 py-1 bg-black text-white text-md font-bold align-middle items-center justify-center',
+      className,
+      small && 'text-sm'
+    )}
+  >
+    {children}
+  </span>
 )

@@ -34,11 +34,12 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     "frontend",
-    "webpack_loader",
     "api",
     "auth.apps.AuthConfig",
+    "webpack_loader",
     "rest_framework",
     "rest_framework_simplejwt.token_blacklist",
+    "django_crontab",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -82,6 +83,8 @@ SIMPLE_JWT = {
     "ROTATE_REFRESH_TOKENS": True,
     "BLACKLIST_AFTER_ROTATION": True,
 }
+
+CRONJOBS = [("*/5 * * * *", "api.cron.create_hackathon_job")]
 
 TEMPLATES = [
     {

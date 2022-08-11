@@ -5,6 +5,7 @@ import { TitleWithNumber } from '@components/TitleWithNumber'
 import { HackathonList } from '@components/HackathonList'
 
 import useStore from '@store/index'
+import dayjs from 'dayjs'
 
 const Hackathons = () => {
   const { hackathons, fetchHackathons } = useStore()
@@ -13,28 +14,38 @@ const Hackathons = () => {
     fetchHackathons()
   }, [])
 
-  const [upcomingHackathons, pastHackathons] = partition(
-    hackathons,
-    (hackathon) => hackathon.dateStart > new Date()
+  const [upcoming, started] = partition(hackathons, (hackathon) =>
+    dayjs(hackathon.dateStart).isAfter(dayjs())
+  )
+
+  const [ended, current] = partition(started, (hackathon) =>
+    dayjs(hackathon.dateEnd).isBefore(dayjs())
   )
 
   return (
     <div className="grid grid-cols-1 gap-y-10">
       <div>
-        <TitleWithNumber title="Upcoming" number={upcomingHackathons.length} />
-        {upcomingHackathons.length ? (
-          <HackathonList hackathons={upcomingHackathons} cards />
+        <TitleWithNumber title="Live" number={current.length} />
+        {current.length ? (
+          <HackathonList hackathons={current} cards />
         ) : (
           <div className="px-4">
-            <h3 className="text-xl">No more hackathons?!?</h3>
+            <h3 className="text-xl">Where are the hackathons?!?</h3>
           </div>
         )}
       </div>
 
-      {!!pastHackathons.length && (
+      {!!upcoming.length && (
         <div>
-          <TitleWithNumber title="Past" number={pastHackathons.length} />
-          <HackathonList hackathons={pastHackathons} />
+          <TitleWithNumber title="Upcoming" number={upcoming.length} />
+          <HackathonList hackathons={upcoming.reverse().slice(0, 20)} />
+        </div>
+      )}
+
+      {!!ended.length && (
+        <div>
+          <TitleWithNumber title="Ended" number={ended.length} />
+          <HackathonList hackathons={ended.slice(0, 20)} />
         </div>
       )}
     </div>

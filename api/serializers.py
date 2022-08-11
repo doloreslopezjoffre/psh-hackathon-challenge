@@ -53,6 +53,8 @@ class HackathonSerializer(serializers.ModelSerializer):
     dateStart = serializers.DateField(source="date_start")
     dateEnd = serializers.DateField(source="date_end")
 
+    isNew = serializers.BooleanField(source="is_new", read_only=True)
+
     class Meta:
         model = Hackathon
         exclude = ["date_start", "date_end"]

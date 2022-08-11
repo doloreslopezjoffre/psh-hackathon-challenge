@@ -29,7 +29,7 @@ export const refresh = async (refreshToken: string) => {
   })
   return {
     accessToken: data.access,
-    refreshToken,
+    refreshToken: data.refresh ?? refreshToken,
   }
 }
 
