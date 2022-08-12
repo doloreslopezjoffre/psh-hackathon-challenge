@@ -32,7 +32,7 @@ export const Navbar: React.FC = () => {
           </li>
 
           <li className="md:text-[1.1rem]">
-            <a href="/devs" {...linkProps}>
+            <a href="/developers" {...linkProps}>
               Best developers
             </a>
           </li>

@@ -7,7 +7,7 @@ import Login from '@pages/Login'
 
 import Developers from '@pages/Developers'
 import Hackathons from '@pages/Hackathons'
-import Hackathon from '@pages/HackathonDevs'
+import Hackathon from '@pages/HackathonDetail'
 
 const Routes = () => (
   <Router>
@@ -16,7 +16,7 @@ const Routes = () => (
         <Login />
       </GuestRoute>
 
-      <AuthRoute path="/hackathons" redirectTo="/login" component={Hackathons} />
+      <AuthRoute path="/hackathons" exact redirectTo="/login" component={Hackathons} />
       <AuthRoute path="/hackathons/:id" redirectTo="/login" component={Hackathon} />
       <AuthRoute path="/developers" redirectTo="/login" component={Developers} />
 

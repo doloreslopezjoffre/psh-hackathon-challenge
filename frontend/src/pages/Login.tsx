@@ -7,10 +7,10 @@ import * as yup from 'yup'
 import { useAuthActions } from 'use-eazy-auth'
 import { LoginCredentials } from '@services/auth'
 
-import { Card } from '@components/Card'
+import { Card } from '@components/common/Card'
 
-import { TextInput } from '@components/TextInput'
-import { Button } from '@components/Button'
+import { TextInput } from '@components/common/TextInput'
+import { Button } from '@components/common/Button'
 
 const schema = yup.object().shape({
   username: yup.string().required('Who are you?'),

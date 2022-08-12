@@ -2,10 +2,14 @@ import React from 'react'
 import dayjs from 'dayjs'
 
 import { ArrowNarrowRightIcon, ExternalLinkIcon } from '@heroicons/react/outline'
-import { BlackTag, BoxTag, RoundTag } from './Tag'
+import { BlackTag, BoxTag, RoundTag } from '../common/Tag'
 import { Hackathon } from '@utils/types/data'
 
-export const HackathonRow: React.FC<Hackathon> = ({
+interface Props extends Omit<Hackathon, 'id'> {
+  onClick: () => void
+}
+
+export const HackathonRow: React.FC<Props> = ({
   name,
   isNew,
   dateStart,
@@ -15,9 +19,13 @@ export const HackathonRow: React.FC<Hackathon> = ({
   // participants,
   website,
   logo,
+  onClick,
 }) => {
   return (
-    <div className="cursor-pointer flex items-center py-4 px-4 lg:py-6 font-semibold text-lg hover:bg-gray-50/50">
+    <div
+      className="cursor-pointer flex items-center py-4 px-4 lg:py-6 font-semibold text-lg hover:bg-gray-50/50"
+      onClick={onClick}
+    >
       <div>
         <img className="w-14 h-14 rounded-full border-2 border-black object-cover" src={logo} />
       </div>

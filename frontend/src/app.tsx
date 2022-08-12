@@ -5,8 +5,8 @@ import Auth from 'use-eazy-auth'
 
 import { login, me, refresh, logout } from '@services/auth'
 
-import { Navbar } from '@components/Navbar'
-import { Layout } from '@components/Layout'
+import { Navbar } from '@components/common/Navbar'
+import { Layout } from '@components/common/Layout'
 
 import 'dayjs/locale/en'
 import LocalizedFormat from 'dayjs/plugin/localizedFormat'

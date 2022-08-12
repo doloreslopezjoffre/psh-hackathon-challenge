@@ -2,10 +2,14 @@ import React from 'react'
 
 import { ArrowNarrowRightIcon, ExternalLinkIcon } from '@heroicons/react/outline'
 import dayjs from 'dayjs'
-import { BlackTag, BoxTag, RoundTag } from './Tag'
+import { BlackTag, BoxTag, RoundTag } from '../common/Tag'
 import { Hackathon } from '@utils/types/data'
 
-export const HackathonCard: React.FC<Hackathon> = ({
+interface Props extends Omit<Hackathon, 'id'> {
+  onClick: () => void
+}
+
+export const HackathonCard: React.FC<Props> = ({
   name,
   isNew,
   dateStart,
@@ -14,10 +18,11 @@ export const HackathonCard: React.FC<Hackathon> = ({
   // participants,
   website,
   logo,
+  onClick,
 }) => {
   return (
-    <div className="border-2 rounded-lg border-black bg-white p-0 hover:bg-gray-50 flex flex-col">
-      <div className="p-6 lg:p-8 cursor-pointer flex-1">
+    <div className="card hover:bg-gray-50">
+      <div className="p-6 lg:p-8 cursor-pointer flex-1" onClick={onClick}>
         <RoundTag>{location}</RoundTag>
 
         <header className="flex items-center justify-between mt-8 mb-6">
@@ -39,8 +44,8 @@ export const HackathonCard: React.FC<Hackathon> = ({
       </div>
 
       <a target="_blank" href={website} rel="noreferrer" className="block">
-        <footer className="h-14 bg-yellow-300 hover:opacity-90 py-4 px-6 lg:px-8 flex items-center justify-between rounded-b-lg border-t-2 border-black">
-          <span className="flex-1 font-semibold">Visit their website</span>
+        <footer className="h-14 bg-yellow-300 hover:bg-yellow-400/70 py-4 px-6 lg:px-8 flex items-center justify-between rounded-b-lg border-t-2 border-black">
+          <span className="flex-1 font-semibold">Visit {website.replace(/^https?:\/\//, '')}</span>
           <ExternalLinkIcon className="h-5 w-5" />
         </footer>
       </a>

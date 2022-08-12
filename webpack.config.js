@@ -43,6 +43,7 @@ module.exports = {
         test: /\.css$/,
         use: [MiniCssExtractPlugin.loader, "css-loader", "postcss-loader"],
       },
+      { test: /\.(png|jpg)$/, use: [{ loader: "url?limit=8192" }] },
     ],
   },
 };

@@ -42,10 +42,10 @@ class DeveloperFactory(factory.django.DjangoModelFactory):
         response = r.json()
         user = response["results"][0]
 
-        return user["picture"]["medium"]
+        return user["picture"]["large"]
 
     class Meta:
-        django_get_or_create = ['username']
+        django_get_or_create = ["username"]
         model = Developer
 
 
@@ -53,7 +53,7 @@ class HackathonFactory(factory.django.DjangoModelFactory):
     name = f"{capwords(fake.sentence(nb_words=2))[:-1]} {choice(['Hackathon', 'Summit', 'Event', 'H4CK'])}"
     motto = fake.catch_phrase()
     location = f"{fake.city()}, {fake.country()}"
-    website = fake.url()
+    website = (fake.url())[:-1]
     date_start = factory.LazyFunction(
         lambda: choice(
             [
@@ -80,5 +80,5 @@ class HackathonFactory(factory.django.DjangoModelFactory):
                 self.participants.add(participant, through_defaults={"score": score})
 
     class Meta:
-        django_get_or_create = ['title']
+        django_get_or_create = ["name"]
         model = Hackathon
