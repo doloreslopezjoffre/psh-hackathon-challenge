@@ -4,9 +4,9 @@
 ## Stack
 **Frontend**
 - ReactJS + Typescript
-- React (Router DOM)[https://reactrouter.com] + (use-eazy-auth)[https://github.com/inmagik/use-eazy-auth] for login protected routes
-- (Axios)[https://axios-http.com] for backend requests
-- (Zustand)[https://github.com/pmndrs/zustand] store
+- [React Router DOM](https://reactrouter.com) + [use-eazy-auth](https://github.com/inmagik/use-eazy-auth) for login protected routes
+- [Axios](https://axios-http.com) for backend requests
+- [Zustand](https://github.com/pmndrs/zustand) store
 - [TailwindCSS](https://tailwindcss.com) for styling
 - [Eslint rules file](frontend/.eslintrc.js)
 
