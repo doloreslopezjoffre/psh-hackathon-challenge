@@ -2,7 +2,7 @@ import React from 'react'
 
 interface Props {
   title: string
-  number: number
+  number?: number | false
 }
 
 export const TitleWithNumber: React.FC<Props> = ({ title, number }) => (

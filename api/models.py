@@ -70,7 +70,7 @@ class Participant(models.Model):
         Hackathon, on_delete=models.SET(get_sentinel_hackathon)
     )
     score = models.PositiveSmallIntegerField(
-        default=0, validators=[MaxValueValidator(100)]
+        default=0, validators=[MaxValueValidator(1000)]
     )
 
     class Meta:

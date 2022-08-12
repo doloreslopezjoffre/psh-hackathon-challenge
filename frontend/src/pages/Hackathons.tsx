@@ -24,16 +24,7 @@ const Hackathons = () => {
 
   return (
     <div className="grid grid-cols-1 gap-y-10">
-      <div>
-        <h3 className="text-2xl font-semibold">Where are the hackathons?!?</h3>
-        <p className="text-lg">
-          Be sure to run{' '}
-          <span className="font-mono bg-slate-400 py-1 px-2 tracking-wider rounded-lg">
-            python manage.py crontab add
-          </span>{' '}
-          and just wait ~5 minutes
-        </p>
-      </div>
+      {!hackathons.length && <EmptyState />}
 
       {!!current.length && (
         <div>
@@ -58,5 +49,18 @@ const Hackathons = () => {
     </div>
   )
 }
+
+const EmptyState = () => (
+  <div>
+    <h3 className="text-2xl font-semibold">Where are the hackathons?!?</h3>
+    <p className="text-lg">
+      Be sure to run{' '}
+      <span className="font-mono bg-slate-400 py-1 px-2 tracking-wider rounded-lg">
+        python manage.py crontab add
+      </span>{' '}
+      and just wait ~5 minutes
+    </p>
+  </div>
+)
 
 export default Hackathons

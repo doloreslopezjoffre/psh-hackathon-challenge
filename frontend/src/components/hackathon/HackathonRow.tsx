@@ -1,9 +1,9 @@
 import React from 'react'
-import dayjs from 'dayjs'
 
-import { ArrowNarrowRightIcon, ExternalLinkIcon } from '@heroicons/react/outline'
+import { ExternalLinkIcon } from '@heroicons/react/outline'
 import { BlackTag, BoxTag, RoundTag } from '../common/Tag'
 import { Hackathon } from '@utils/types/data'
+import { HackathonDates } from './HackathonDates'
 
 interface Props extends Omit<Hackathon, 'id'> {
   onClick: () => void
@@ -12,14 +12,13 @@ interface Props extends Omit<Hackathon, 'id'> {
 export const HackathonRow: React.FC<Props> = ({
   name,
   isNew,
-  dateStart,
-  dateEnd,
   location,
   motto,
   // participants,
   website,
   logo,
   onClick,
+  ...dates
 }) => {
   return (
     <div
@@ -36,16 +35,14 @@ export const HackathonRow: React.FC<Props> = ({
           <p className="text-sm font-light text-black-400 tracking-wide">{motto}</p>
         </div>
 
-        <div className="inline-flex items-center space-x-3 text-xs lg:text-lg">
+        <div className="inline-flex items-center md:space-x-3 text-xs lg:text-lg">
           {isNew && (
             <BlackTag small className="hidden md:inline-flex">
               NEW
             </BlackTag>
           )}
 
-          <time>{dayjs(dateStart).format('ll')}</time>
-          <ArrowNarrowRightIcon className="h-5 w-5" />
-          <time>{dayjs(dateEnd).format('ll')}</time>
+          <HackathonDates {...dates} />
         </div>
 
         <div className="hidden lg:block">

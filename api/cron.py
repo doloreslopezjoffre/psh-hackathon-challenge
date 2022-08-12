@@ -10,6 +10,6 @@ def create_hackathon_job():
 
     cant_participants = randint(11, 25)
     participants = DeveloperFactory.create_batch(cant_participants)
-    hackathon = HackathonFactory.create(
-        logo=response.get("file"), participants=participants
+    HackathonFactory.create(
+        logo=response["file"], participants=participants
     )

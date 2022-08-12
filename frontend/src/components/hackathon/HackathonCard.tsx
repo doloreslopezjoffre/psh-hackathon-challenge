@@ -32,7 +32,7 @@ export const HackathonCard: React.FC<Props> = ({
           <img className="w-14 h-14 rounded-full border-2 border-black object-cover" src={logo} />
         </header>
 
-        <div className="flex flex-row items-center justify-between">
+        <div className="flex flex-row items-center justify-between md:space-x-3">
           <BoxTag>
             <time>{dayjs(dateStart).format('ll')}</time>
             <ArrowNarrowRightIcon className="h-5 w-5" />

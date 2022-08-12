@@ -16,33 +16,33 @@ class DeveloperFactory(factory.django.DjangoModelFactory):
     def name(self):
         r = requests.get("https://randomuser.me/api")
         response = r.json()
-        user = response.get("results")[0]
+        user = response["results"][0]
 
-        return user.get("name.first")
+        return user["name"]["first"]
 
     @factory.lazy_attribute
     def country(self):
         r = requests.get("https://randomuser.me/api")
         response = r.json()
-        user = response.get("results")[0]
+        user = response["results"][0]
 
-        return user.get("location.country")
+        return user["location"]["country"]
 
     @factory.lazy_attribute
     def username(self):
         r = requests.get("https://randomuser.me/api")
         response = r.json()
-        user = response.get("results")[0]
+        user = response["results"][0]
 
-        return user.get("login.username")
+        return user["login"]["username"]
 
     @factory.lazy_attribute
     def picture(self):
         r = requests.get("https://randomuser.me/api")
         response = r.json()
-        user = response.get("results")[0]
+        user = response["results"][0]
 
-        return user.get("picture.large")
+        return user["picture"]["large"]
 
     class Meta:
         django_get_or_create = ["username"]
@@ -76,7 +76,7 @@ class HackathonFactory(factory.django.DjangoModelFactory):
         if extracted:
             # A list of participants were passed in, use them
             for participant in extracted:
-                score = randint(1, 100)
+                score = randint(1, 1000)
                 self.participants.add(participant, through_defaults={"score": score})
 
     class Meta:
