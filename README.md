@@ -1,1 +1,2 @@
-# PSH Hackathon challenge submission by Dolores Lopez Joffre 👩🏽‍💻
+# PSH Hackathon challenge
+**Submission by Dolores Lopez Joffre 👩🏽‍💻**
