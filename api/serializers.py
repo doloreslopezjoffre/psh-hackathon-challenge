@@ -9,37 +9,7 @@ class DeveloperSerializer(serializers.ModelSerializer):
         fields = "__all__"
 
 
-""" class ParticipantSerializer(serializers.Serializer):
-    # developer = DeveloperSerializer()
-    developer = serializers.SerializerMethodField()
-
-    def get_developer(self, dev):
-        dev_query = Developer.objects.filter(developer=dev.pk)
-        serializer = DeveloperSerializer(dev_query, many=True)
-
-        return serializer.data
-
-    class Meta:
-        model = Participant
-        fields = "__all__"
-
-
-class HackathonSerializer(serializers.ModelSerializer):
-    # participants = ParticipantSerializer(many=True)
-    participants = serializers.SerializerMethodField()
-
-    def get_developer(self, dev):
-        dev_query = Participant.objects.filter(developer=dev.pk)
-        serializer = Participant(dev_query, many=True)
-
-        return serializer.data
-
-    class Meta:
-        model = Hackathon
-        fields = "__all__" """
-
-
-class ParticipantSerializer(serializers.ModelSerializer):
+class RawParticipantSerializer(serializers.ModelSerializer):
     developer = DeveloperSerializer()
 
     class Meta:
@@ -48,7 +18,7 @@ class ParticipantSerializer(serializers.ModelSerializer):
 
 
 class HackathonSerializer(serializers.ModelSerializer):
-    participants = ParticipantSerializer(source="participant_set", many=True)
+    participants = RawParticipantSerializer(source="participant_set", many=True)
 
     dateStart = serializers.DateField(source="date_start")
     dateEnd = serializers.DateField(source="date_end")
@@ -58,3 +28,20 @@ class HackathonSerializer(serializers.ModelSerializer):
     class Meta:
         model = Hackathon
         exclude = ["date_start", "date_end"]
+
+
+class ParticipantSerializer(serializers.ModelSerializer):
+    developer = DeveloperSerializer()
+    hackathon = HackathonSerializer()
+
+    """ 
+    def __init__(self, *args, **kwargs):
+        skip_hackathon = self.context.get("skip_hackathon")
+        if skip_hackathon:
+            kwargs.pop("hackathon ", False)
+        super().__init__(*args, **kwargs)
+    """
+
+    class Meta:
+        model = Participant
+        fields = "__all__"

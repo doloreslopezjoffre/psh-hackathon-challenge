@@ -16,33 +16,33 @@ class DeveloperFactory(factory.django.DjangoModelFactory):
     def name(self):
         r = requests.get("https://randomuser.me/api")
         response = r.json()
-        user = response["results"][0]
+        user = response.get("results")[0]
 
-        return user["name"]["first"]
+        return user.get("name.first")
 
     @factory.lazy_attribute
     def country(self):
         r = requests.get("https://randomuser.me/api")
         response = r.json()
-        user = response["results"][0]
+        user = response.get("results")[0]
 
-        return user["location"]["country"]
+        return user.get("location.country")
 
     @factory.lazy_attribute
     def username(self):
         r = requests.get("https://randomuser.me/api")
         response = r.json()
-        user = response["results"][0]
+        user = response.get("results")[0]
 
-        return user["login"]["username"]
+        return user.get("login.username")
 
     @factory.lazy_attribute
     def picture(self):
         r = requests.get("https://randomuser.me/api")
         response = r.json()
-        user = response["results"][0]
+        user = response.get("results")[0]
 
-        return user["picture"]["large"]
+        return user.get("picture.large")
 
     class Meta:
         django_get_or_create = ["username"]

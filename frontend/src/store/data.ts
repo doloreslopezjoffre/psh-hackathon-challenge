@@ -1,15 +1,17 @@
 import { StateCreator } from 'zustand'
 
-import { listHackathons, getHackathon } from '@services/data'
+import { listHackathons, getHackathon, listDevelopers } from '@services/data'
 
-import { Hackathon } from '@utils/types/data'
+import { Hackathon, Participant } from '@utils/types/data'
 import { BoundSlices } from './index'
 
 export interface DataSlice {
   hackathons: Hackathon[]
   hackathon: Hackathon | null
+  developers: Participant[]
   fetchHackathons: () => void
   fetchHackathon: (id: string) => void
+  fetchDevelopers: () => void
 }
 
 export const createDataSlice: StateCreator<
@@ -20,6 +22,7 @@ export const createDataSlice: StateCreator<
 > = (set) => ({
   hackathons: [],
   hackathon: null,
+  developers: [],
   fetchHackathons: async () => {
     const hackathons: Hackathon[] = await listHackathons()
     await set({ hackathons })
@@ -27,5 +30,9 @@ export const createDataSlice: StateCreator<
   fetchHackathon: async (id: string) => {
     const hackathon: Hackathon = await getHackathon(id)
     await set({ hackathon })
+  },
+  fetchDevelopers: async () => {
+    const developers: Participant[] = await listDevelopers()
+    await set({ developers })
   },
 })

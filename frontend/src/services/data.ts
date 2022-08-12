@@ -1,5 +1,5 @@
 import instance from '@utils/auth'
-import { Hackathon } from '@utils/types/data'
+import { Hackathon, Participant } from '@utils/types/data'
 
 export const listHackathons = async () => {
   const { data } = await instance.get<Hackathon[]>('hackathons/all/')
@@ -8,5 +8,10 @@ export const listHackathons = async () => {
 
 export const getHackathon = async (id: string) => {
   const { data } = await instance.get<Hackathon>(`hackathons/${id}/`)
+  return data
+}
+
+export const listDevelopers = async () => {
+  const { data } = await instance.get<Participant[]>('developers/all/')
   return data
 }

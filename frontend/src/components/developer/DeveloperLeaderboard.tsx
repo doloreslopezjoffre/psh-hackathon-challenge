@@ -8,10 +8,9 @@ import { DeveloperRow } from './DeveloperRow'
 
 interface Props {
   participants: Participant[]
-  hackathon?: Hackathon
 }
 
-export const DeveloperLeaderboard: React.FC<Props> = ({ participants, hackathon }) => (
+export const DeveloperLeaderboard: React.FC<Props> = ({ participants }) => (
   <div className="grid grid-cols-1 gap-y-10">
     <div>
       <Podium podium={participants.slice(0, 3)} />
@@ -23,7 +22,7 @@ export const DeveloperLeaderboard: React.FC<Props> = ({ participants, hackathon 
           key={id}
           {...participant}
           place={positional(i + 4)}
-          hackathon={participant.hackathon ?? hackathon}
+          hackathon={participant.hackathon}
         />
       ))}
     </List>

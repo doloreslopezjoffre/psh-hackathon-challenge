@@ -6,8 +6,8 @@ from django.shortcuts import get_object_or_404
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import IsAuthenticated
 
-from .models import Hackathon
-from .serializers import HackathonSerializer
+from .models import Developer, Hackathon, Participant
+from .serializers import HackathonSerializer, ParticipantSerializer
 
 
 @api_view(["GET"])
@@ -25,4 +25,12 @@ def get_hackathon(request, id):
         return Response(status=status.HTTP_400_BAD_REQUEST)
     hackathon = get_object_or_404(Hackathon, id=id)
     serializer = HackathonSerializer(hackathon)
+    return Response(serializer.data, status=status.HTTP_200_OK)
+
+
+@api_view(["GET"])
+@permission_classes([IsAuthenticated])
+def list_participants(request):
+    queryset = Participant.objects.all()
+    serializer = ParticipantSerializer(queryset, many=True)
     return Response(serializer.data, status=status.HTTP_200_OK)
