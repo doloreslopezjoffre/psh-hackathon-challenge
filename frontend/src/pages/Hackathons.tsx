@@ -54,9 +54,9 @@ const EmptyState = () => (
   <div>
     <h3 className="text-2xl font-semibold">Where are the hackathons?!?</h3>
     <p className="text-lg">
-      Be sure to run{' '}
-      <span className="font-mono bg-slate-400 py-1 px-2 tracking-wider rounded-lg">
-        python manage.py crontab add
+      Be sure to run <span className="text-code text-sm">python manage.py crontab add</span> +{' '}
+      <span className="text-code text-sm">
+        crontab add <span className="italic">[hash]</span>
       </span>{' '}
       and just wait ~5 minutes
     </p>

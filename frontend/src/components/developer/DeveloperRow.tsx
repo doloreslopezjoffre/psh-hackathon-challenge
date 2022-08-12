@@ -33,19 +33,15 @@ export const DeveloperRow: React.FC<Props> = ({ developer, hackathon, score, pla
             src={picture}
           />
         </div>
-        <div className="inline-flex sm:hidden items-center mt-2">
-          <AtSymbolIcon className="h-full w-4" />
-          <h3 className="text-sm font-light text-black-400 tracking-wide">{username}</h3>
-        </div>
       </div>
 
-      <div className="flex-1 flex items-center justify-end sm:space-x-16 ml-4">
-        <div className="hidden sm:inline-block flex-1 mb-1">
+      <div className="flex-1 flex flex-col sm:flex-row items-end sm:items-center justify-end sm:space-x-16 ml-4">
+        <div className="flex-1 mb-1 flex flex-col">
           <div className="inline-flex items-center">
             <AtSymbolIcon className="h-full w-6" />
-            <h3 className="text-xl font-semibold">{username}</h3>
+            <h3 className="text-sm sm:text-xl font-semibold">{username}</h3>
           </div>
-          <p className="text-sm font-light text-black-400 tracking-wide">
+          <p className="hidden sm:inline-block text-sm font-light text-black-400 tracking-wide">
             {name} from {country}
           </p>
         </div>
@@ -54,7 +50,7 @@ export const DeveloperRow: React.FC<Props> = ({ developer, hackathon, score, pla
           <RoundTag>{score} pts.</RoundTag>
 
           {hackathon && (
-            <div className="hidden sm:inline-block ml-4" title={hackathon.name}>
+            <div className="ml-4" title={hackathon.name}>
               <BoxTag
                 background="bg-yellow-300"
                 className="!p-1 simple-hover"
