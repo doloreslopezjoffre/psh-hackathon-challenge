@@ -10,6 +10,14 @@
 - [TailwindCSS](https://tailwindcss.com) for styling
 - [Eslint rules file](frontend/.eslintrc.js)
 
+**Backend**
+- Django + Django REST Framework
+- [SIMPLE JWT](https://django-rest-framework-simplejwt.readthedocs.io/en/latest) plugin for login protected endpoints
+- [Webpack loader](https://github.com/django-webpack/django-webpack-loader) for bundling and serving frontend static files on the fly
+- [Factory Boy](https://factoryboy.readthedocs.io/en/stable) model factories + [Django REST framework](https://www.django-rest-framework.org/api-guide/serializers) model serializers
+- [Crontab](https://github.com/kraiz/django-crontab) for job scheduling
+- [Faker](https://github.com/joke2k/faker) for miscellaneous fake data generation + randomuser.me/api for fake users
+
 
 ## Running for development
 - Install dependencies with `yarn`
